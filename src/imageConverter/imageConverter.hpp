@@ -1,0 +1,33 @@
+
+
+#ifndef COURSE_PROJECT_imageConverter_HPP
+#define COURSE_PROJECT_imageConverter_HPP
+
+
+#include <vector>
+#include <string>
+#include <opencv2/opencv.hpp>
+
+
+class ImageConverter{
+public:
+  ImageConverter() = default;
+  explicit ImageConverter(const std::string &fileName);
+
+  friend std::ostream& operator<<(std::ostream& out, const ImageConverter& imageConverter);
+
+  cv::Mat getImage() const;
+  void setImage(const std::string &fileName);
+
+  std::vector<double> getVecImage() const;
+
+private:
+  cv::Mat image_;
+  std::vector<double > vecImage_;
+
+  std::vector<double> makeVectorPerformance() const;
+};
+
+std::ostream& operator<<(std::ostream& out, const ImageConverter& imageConverter);
+
+#endif //COURSE_PROJECT_imageConverter_HPP
